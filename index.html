@@ -49,10 +49,20 @@
             font-size: 18px;
             color: #e74c3c;
         }
-        .note {
-            margin-top: 15px;
-            color: #aaa;
-            font-size: 12px;
+        #redirect-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e91e63;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #redirect-btn:hover {
+            background-color: #d81b60;
         }
     </style>
 </head>
@@ -71,10 +81,29 @@
                 <li>Haz clic en los <span class="highlight">tres puntos (•••)</span> o en el menú en la parte superior derecha.</li>
                 <li>Selecciona la opción <span class="highlight">"Abrir en el navegador"</span>.</li>
             </ol>
-            <strong>Solo así podrás acceder al contenido completo.</strong>
+            <strong>Solo después de hacerlo, podrás continuar.</strong>
         </div>
+
+        <!-- Botão de redirecionamento -->
+        <a id="redirect-btn" href="https://hotm.art/nailexpert0">Continuar al Curso</a>
 
         <p class="note">Esta oportunidad es única y válida solo por tiempo limitado. ¡No te la pierdas!</p>
     </div>
+
+    <script>
+        // Verifica se a página foi aberta no navegador externo
+        (function() {
+            const redirectBtn = document.getElementById('redirect-btn');
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Detecta se está no navegador do dispositivo (fora de apps como Instagram)
+            const isInAppBrowser = /Instagram|FBAN|FBAV/i.test(userAgent);
+
+            if (!isInAppBrowser) {
+                // Mostra o botão apenas se estiver no navegador do dispositivo
+                redirectBtn.style.display = 'inline-block';
+            }
+        })();
+    </script>
 </body>
 </html>
